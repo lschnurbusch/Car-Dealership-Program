@@ -59,4 +59,6 @@ vehicle_inventory.push(vehicle2)
 vehicle_inventory.each do |vehicle|
   puts vehicle.score
 end
+
+puts "Hello world"
   

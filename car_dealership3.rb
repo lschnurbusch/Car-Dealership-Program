@@ -2,11 +2,12 @@ class Vehicle
   
   attr_accessor :year_make_model, :mileage, :price, :color
   
-  def initialize(year_make_model = "", mileage = 0, price = 0, color = "")
+  def initialize(year_make_model = "", mileage = 0, price = 0, color = "", preference_score = 0)
     @year_make_model = year_make_model
     @mileage = mileage
     @price = price
     @color = color
+    @preference_score = preference_score
   end
   
   def collect_vehicle_info
@@ -63,21 +64,24 @@ class Preference
   def score(vehicle) 
     mileage_points = (5 - (vehicle.mileage / (@max_mileage/5)))*@mileage_imp
     price_points = (5 - (vehicle.price / (@max_price/5)))*@price_imp
-    puts "This vehicle #{puts self} has a preference score of #{100 + mileage_points + price_points}."
+    100 + mileage_points + price_points
   end
 end
 
+vehicle_inventory = []
+
 vehicle1 = Vehicle.new()
 vehicle1.collect_vehicle_info
-puts vehicle1.display_vehicle
+vehicle_inventory.push(vehicle1)
 
 vehicle2 = Vehicle.new()
 vehicle2.collect_vehicle_info
-puts vehicle2.display_vehicle
-
-vehicle_inventory = []
-vehicle_inventory.push(vehicle1)
 vehicle_inventory.push(vehicle2)
+
+puts vehicle_inventory
+
+vehicle3 = Vehicle.new("2019 Jeep Cherokee", 80000, 7500, "green", 0)
+vehicle_inventory.push(vehicle3)
 
 puts vehicle_inventory
 
@@ -86,8 +90,6 @@ preference1.collect_preference
 puts preference1.display_preference
 
 vehicle_inventory.each do |vehicle|
-  preference1.score(vehicle)
+  @preference_score = preference1.score(vehicle)
+  puts "This vehicle #{puts @year_make_model} has a preference score of #{@preference_score}."
 end
-
-
-

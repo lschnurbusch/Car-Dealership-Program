@@ -64,7 +64,13 @@ class Preference
   def score(vehicle) 
     mileage_points = (5 - (vehicle.mileage / (@max_mileage/5)))*@mileage_imp
     price_points = (5 - (vehicle.price / (@max_price/5)))*@price_imp
-    100 + mileage_points + price_points
+    if vehicle.color == @fav_color
+      color_points = 25
+    else 
+      color_points = 0
+    end
+    color_points = 25 if vehicle.color == @fav_color
+    100 + mileage_points + price_points + color_points
   end
 end
 
@@ -91,5 +97,5 @@ puts preference1.display_preference
 
 vehicle_inventory.each do |vehicle|
   @preference_score = preference1.score(vehicle)
-  puts "This vehicle #{puts @year_make_model} has a preference score of #{@preference_score}."
+  puts "This vehicle #{@year_make_model} has a preference score of #{@preference_score}."
 end

@@ -1,3 +1,6 @@
+require_relative 'vehicle_class'
+require_relative 'preference_class'
+
 vehicle1 = Vehicle.new()
 vehicle1.collect_vehicle_info
 Vehicle_inventory.push(vehicle1)

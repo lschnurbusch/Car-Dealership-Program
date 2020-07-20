@@ -1,3 +1,5 @@
+require_relative 'vehicle_class'
+
 class Preference
   
   attr_reader :max_mileage, :max_price, :fav_color, :mileage_imp, :price_imp, :color_imp

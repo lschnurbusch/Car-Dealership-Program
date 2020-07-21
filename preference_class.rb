@@ -28,11 +28,10 @@ class Preference
     mileage_points = (5 - (vehicle.mileage / (@max_mileage/5)))*@mileage_imp
     price_points = (5 - (vehicle.price / (@max_price/5)))*@price_imp
     if vehicle.color == @fav_color
-      color_points = 25
+      color_points = 5 * @color_imp
     else 
       color_points = 0
     end
-    color_points = (5 * @color_imp) if vehicle.color == @fav_color
     100 + mileage_points + price_points + color_points
   end
   
